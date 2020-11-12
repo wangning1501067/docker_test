@@ -46,61 +46,36 @@
         </plugins>
     </build>-->
 
-    <!--docker插件-->
     <build>
-        <finalName>dockertest</finalName>
         <plugins>
-            <!--<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-
-
             <plugin>
                 <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.1.1</version>
-
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.1</version>
                 <executions>
                     <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <configuration>
-                            <imageName>docker.io/kkapelon/docker-maven-comparsion</imageName>
-                            <!--<tag>projectVersion</tag>-->
-                        </configuration>
-                    </execution>
-                </executions>
-
-                <!--<executions>
-                    <execution>
+                        <id>build-image</id>
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                     </execution>
-                </executions>-->
-                <!--<configuration>
-                    <imageName>${docker.image.prefix}/${project.build.finalName}</imageName>
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                </executions>
+                <configuration>
+                    <imageName>${project.artifactId}</imageName>
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <dockerHost>http://49.232.156.23:2375</dockerHost>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
+                            <include>${project.build.finalName}</include>
                         </resource>
                     </resources>
-                    <serverId>bys-docker</serverId>
-                </configuration>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
