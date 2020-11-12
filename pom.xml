@@ -37,13 +37,41 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
+
+    <!--docker插件-->
+    <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <!--<executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>build</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <imageName>${docker.image.prefix}/${project.build.finalName}</imageName>
+            <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+            <resources>
+                <resource>
+                    <targetPath>/</targetPath>
+                    <directory>${project.build.directory}</directory>
+                    <include>${project.build.finalName}.jar</include>
+                </resource>
+            </resources>
+            <serverId>bys-docker</serverId>
+        </configuration>-->
+    </plugin>
+</plugins>
 
 </project>
