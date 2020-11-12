@@ -54,14 +54,28 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
+
                 <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <imageName>docker.io/kkapelon/docker-maven-comparsion</imageName>
+                            <!--<tag>projectVersion</tag>-->
+                        </configuration>
+                    </execution>
+                </executions>
+
+                <!--<executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
                 <!--<configuration>
                     <imageName>${docker.image.prefix}/${project.build.finalName}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
